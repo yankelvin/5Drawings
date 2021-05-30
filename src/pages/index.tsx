@@ -48,7 +48,7 @@ export default function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    Powered By Yan Kelvin
+                    Github
                 </a>
             </footer>
         </div>
