@@ -1,11 +1,10 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
-import {api} from '../services/api';
 import styles from '../styles/Home.module.scss';
-import GetCanvasImage from '../utils/GetCanvasImage';
 
 interface CanvasProps {
     width: number;
     height: number;
+    predictImage: Function;
 }
 
 type Coordinate = {
@@ -13,7 +12,7 @@ type Coordinate = {
     y: number;
 };
 
-const Canvas = ({width, height}: CanvasProps) => {
+const Canvas = ({width, height, predictImage}: CanvasProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [isPainting, setIsPainting] = useState(false);
     const [mousePosition, setMousePosition] =
@@ -148,17 +147,5 @@ Canvas.defaultProps = {
     width: 500,
     height: 500,
 };
-
-async function predictImage(blob: Blob): Promise<void> {
-    const response = await api.post(
-        'predict',
-        {file: blob},
-        {headers: {'Content-Type': 'multipart/form-data'}},
-    );
-
-    console.log(response.data);
-
-    return response.data;
-}
 
 export default Canvas;

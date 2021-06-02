@@ -13,8 +13,13 @@ cnn = Cnn()
 @app.route('/api/predict', methods=['POST'])
 @cross_origin()
 def predict():
-    raw_data = request.files['file'].read()
+    raw_data = request.files['file']
 
     predict = cnn.predict(raw_data)
 
     return {'predict': predict}
+
+
+@app.route("/api/time")
+def hello():
+    return {'time': time.time()}
