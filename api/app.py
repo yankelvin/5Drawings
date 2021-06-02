@@ -20,3 +20,7 @@ def predict():
 @app.route("/api/time")
 def hello():
     return {'time': time.time()}
+
+
+if __name__ == '__main__':
+    app.run(debug=True)

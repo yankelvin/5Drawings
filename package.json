@@ -5,8 +5,9 @@
     "scripts": {
         "dev": "next dev",
         "build": "next build",
-        "start": "next start",
-        "start-api": "cd api && venv/Scripts/flask run --no-debugger"
+        "start": "next start -p $PORT",
+        "start-api": "cd api && venv/Scripts/flask run --no-debugger",
+        "heroku-postbuild": "cd api && pip install requirements.txt && venv/Scripts/flask run --no-debugger"
     },
     "dependencies": {
         "axios": "^0.21.1",
