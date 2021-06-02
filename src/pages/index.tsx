@@ -35,22 +35,28 @@ export default function Home() {
             }
         });
 
-        switch (maxIndex) {
-            case 0:
-                setObject('Olho');
-                break;
-            case 1:
-                setObject('Peixe');
-                break;
-            case 2:
-                setObject('Diamante');
-                break;
-            case 3:
-                setObject('Borboleta');
-                break;
-            case 4:
-                setObject('Melância');
-                break;
+        let text = 'O seu desenho é um(a): ';
+
+        if (maxValue * 100 > 90) {
+            switch (maxIndex) {
+                case 0:
+                    setObject(text + 'Olho');
+                    break;
+                case 1:
+                    setObject(text + 'Peixe');
+                    break;
+                case 2:
+                    setObject(text + 'Diamante');
+                    break;
+                case 3:
+                    setObject(text + 'Borboleta');
+                    break;
+                case 4:
+                    setObject(text + 'Melancia');
+                    break;
+            }
+        } else {
+            setObject('Não sei qual o seu desenho =/');
         }
     }
 
@@ -75,12 +81,12 @@ export default function Home() {
 
                 <p className={styles.description}>
                     Desenhos treinados: olho, peixe, diamante, borboleta e
-                    melância.
+                    melancia.
                 </p>
 
                 {object && (
                     <span className={styles.description}>
-                        <i>O seu desenho é um(a): {object}</i>
+                        <i>{object}</i>
                     </span>
                 )}
 
